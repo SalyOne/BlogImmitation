@@ -5,3 +5,15 @@ export interface Post {
   description: string;
   createdAt: string;
 }
+
+export interface CreatePostDto {
+  title: string;
+  author: string;
+  description: string;
+}
+
+export interface UpdatePostDto {
+  title?: string;
+  author?: string;
+  description?: string;
+}

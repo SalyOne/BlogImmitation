@@ -1,12 +1,52 @@
 <div class="post-list-container">
+  <!-- ფილტრები -->
   <div class="filter-row">
+    <mat-form-field appearance="outline">
+      <mat-label>Search by title</mat-label>
+      <input
+        matInput
+        [ngModel]="titleFilter()"
+        (ngModelChange)="onTitleFilterChange($event)"
+        placeholder="Filter posts...">
+    </mat-form-field>
 
+    <mat-form-field appearance="outline">
+      <mat-label>Sort by date</mat-label>
+      <mat-select
+        [ngModel]="sortOrder()"
+        (ngModelChange)="onSortOrderChange($event)">
+        <mat-option value="desc">Newest First</mat-option>
+        <mat-option value="asc">Oldest First</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-
+  <!-- პოსტების ჩამონათვალი -->
   <div class="post-list-item-container">
-    @for (post of posts; track  post) {
-        <app-post-item></app-post-item>
+    @if (loading()) {
+      <div class="loading-state">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        <p>პოსტები იტვირთება...</p>
+      </div>
+    } @else {
+      @for (post of pagedPosts(); track post.id) {
+        <app-post-item [postItem]="post"></app-post-item>
+      } @empty {
+        <div class="empty-state">
+          <mat-icon>article</mat-icon>
+          <p>პოსტები ვერ მოიძებნა</p>
+        </div>
+      }
     }
   </div>
+  <!--  პაგინაცია, გამოჩნდება პოსტების ქონის შემთხვევაში -->
+  @if (filteredTotal()) {
+    <mat-paginator
+      [length]="filteredTotal()"
+      [pageIndex]="pageIndex()"
+      [pageSize]="pageSize()"
+      [pageSizeOptions]="[5, 10, 20, 50]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  }
 
 </div>

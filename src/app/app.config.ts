@@ -23,9 +23,5 @@ export const appConfig: ApplicationConfig = {
         passThruUnknownUrl: true
       })
     )
-    // importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryData, {
-    //   apiBase: '/api',
-    //   delay: 300
-    // }))
   ]
 };

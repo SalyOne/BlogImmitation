@@ -1,5 +1,21 @@
-.post-list-item-container{
+.filter-row {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.post-list-item-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+.loading-state,
+.empty-state {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

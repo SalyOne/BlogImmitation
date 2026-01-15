@@ -1,35 +1,44 @@
 import { Injectable } from '@angular/core';
 import {POSTS_DATA} from './mock-data/post-data/posts.data';
-import {InMemoryDbService} from 'angular-in-memory-web-api';
-
-
-
-
-// Add these logs OUTSIDE the class to test if import works
-console.log('🔍 in-memory-data.ts file loaded');
-console.log('🔍 POSTS_DATA imported:', POSTS_DATA);
-console.log('🔍 POSTS_DATA is array?', Array.isArray(POSTS_DATA));
-console.log('🔍 POSTS_DATA length:', POSTS_DATA?.length);
+import {InMemoryDbService, RequestInfo} from 'angular-in-memory-web-api';
+import {Post} from '../models/post.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InMemoryData implements InMemoryDbService {
 
-  constructor() {
-    console.log('🏗️ InMemoryData service constructed');
-  }
   createDb() {
     const posts = POSTS_DATA;
 
-    console.log('==========================================');
-    console.log('📦 IN-MEMORY DATABASE CREATED');
-    console.log('📦 Posts count:', posts.length);
-    console.log('📦 Posts data:', posts);
-    console.log('==========================================');
     return {posts};
   }
+  post(reqInfo: RequestInfo) {
+    const collectionName = reqInfo.collectionName;
 
+    if (collectionName === 'posts') {
+      const newPost = reqInfo.utils.getJsonBody(reqInfo.req);
+
+      // Auto-add createdAt if not provided
+      if (!newPost.createdAt) {
+        newPost.createdAt = new Date().toISOString().split('T')[0];
+      }
+
+      // Auto-generate ID
+      newPost.id = this.genId(reqInfo.collection as Post[]);
+
+      reqInfo.collection.push(newPost);
+
+      return reqInfo.utils.createResponse$(() => {
+        return {
+          body: newPost,
+          status: 201
+        };
+      });
+    }
+
+    return undefined; // Let default POST handle it
+  }
 
   genId<T extends { id: number }>(collection: T[]): number {
     return collection.length > 0
