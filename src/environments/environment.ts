@@ -1,4 +1,6 @@
 export const environment = {
-  production: true,
-  apiUrl: 'https://api.myapp.com'
+  production: false,
+  useInMemoryApi: true,
+  apiUrl: 'api', // In-memory API base URL
+  apiDelay: 500, // Simulate network delay in ms
 };

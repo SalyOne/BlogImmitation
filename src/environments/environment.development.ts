@@ -1,4 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000'
+  useInMemoryApi: true,
+  apiUrl: 'api', // In-memory API base URL
+  apiDelay: 500, // Simulate network delay in ms
 };
