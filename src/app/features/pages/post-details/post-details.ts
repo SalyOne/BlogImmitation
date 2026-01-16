@@ -25,10 +25,7 @@ export class PostDetails implements OnInit {
     map(d => d['post'] as Post)
   );
   ngOnInit() {
-    // console.log(this.post$)
-    this.post$.subscribe(post => {
-      console.log(post);
-    })
+
   }
 
   editPost() {

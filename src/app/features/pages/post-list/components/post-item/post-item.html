@@ -1,5 +1,5 @@
-  <mat-card appearance="outlined" class="post-item" [routerLink]="['/posts', postItem.id]">
-
+  <mat-card appearance="outlined" class="post-item" [routerLink]="['/posts/97'
+  ]">
     <mat-card-header>
       <mat-card-title> {{postItem.title}}</mat-card-title>
       <mat-card-subtitle>{{postItem.author}} | <small>{{postItem.createdAt}}</small></mat-card-subtitle>
@@ -8,6 +8,6 @@
      {{postItem.description | truncate}}
     </mat-card-content>
     <mat-card-actions>
-      <a  [routerLink]="['/posts', postItem.id]">Learn More</a>
+      <a  [routerLink]="['/posts/95']">Learn More</a>
     </mat-card-actions>
   </mat-card>
