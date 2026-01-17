@@ -1,7 +1,7 @@
 @if (post$ | async; as post) {
   <div class="header-row">
     <h1>{{ post.title }}</h1>
-    <button mat-stroked-button (click)="editPost()">
+    <button mat-stroked-button [routerLink]="['/posts', post.id,'edit']">
       <mat-icon>edit</mat-icon>
       edit post
     </button>

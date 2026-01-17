@@ -1,6 +1,6 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {PostService} from '../../../core/services/post.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {Post} from '../../../core/models/post.model';
 import {filter, map, switchMap, tap} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
@@ -17,7 +17,8 @@ import {ConfirmDialog} from '../../../shared/components/confirm-dialog/confirm-d
     AsyncPipe,
     MatButton,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterLink
   ],
   templateUrl: './post-details.html',
   styleUrl: './post-details.scss',
@@ -35,25 +36,21 @@ export class PostDetails {
     tap(data => this.postId = data.id)
   );
 
-  editPost() {
-
-  }
-
   deletePost() {
-      const dialogRef = this.dialog.open(ConfirmDialog, {
-        data: {
-          title: 'Delete post',
-          message: 'Are you sure you want to delete this post?',
-        }
-      })
+    const dialogRef = this.dialog.open(ConfirmDialog, {
+      data: {
+        title: 'პოსტის წაშლა',
+        message: 'ნამდვილად გსურთ პოსტის წაშლა?',
+      }
+    })
 
-      dialogRef.afterClosed().pipe(
-        filter(Boolean),
-        switchMap(() => this.postService.deletePost(this.postId))
-      ).subscribe(result => {
-        this.snackBar.message("Post deleted successfully.", 'success');
-        this.router.navigate(['/posts']);
-      })
-    }
+    dialogRef.afterClosed().pipe(
+      filter(Boolean),
+      switchMap(() => this.postService.deletePost(this.postId))
+    ).subscribe(res => {
+      this.snackBar.message("პოსტი წაიშალა წარმატებით", 'success');
+      this.router.navigate(['/posts']);
+    })
+  }
 
 }

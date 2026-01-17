@@ -1,87 +1,102 @@
-import {Post} from '../../../models/post.model';
-
+import { Post } from '../../../models/post.model';
 
 export const POSTS_DATA: Post[] = [
   {
     id: 1,
-    title: 'Getting Started with Angular 20',
-    author: 'John Doe',
-    description: 'Angular 20 introduces amazing new features including improved signals, better performance, and enhanced developer experience. This comprehensive guide will walk you through all the major updates and show you how to leverage them in your projects.',
-    createdAt: '2026-01-10'
+    title: 'Morning Routines That Actually Work',
+    description: 'Simple habits people use to start their day with more focus and less stress.',
+    author: 'Anna',
+    createdAt: '2026-01-02',
   },
   {
     id: 2,
-    title: 'Understanding Lazy Loading in Angular',
-    author: 'Jane Smith',
-    description: 'Lazy loading is a design pattern that delays the loading of resources until they are actually needed. In Angular applications, this technique can significantly improve initial load time and overall performance by splitting your application into smaller chunks that are loaded on demand.',
-    createdAt: '2026-01-12'
+    title: 'Best Cafes to Visit in Winter',
+    description: 'A short guide to cozy cafes perfect for cold weather and long conversations.',
+    author: 'Luka',
+    createdAt: '2026-01-03',
   },
   {
     id: 3,
-    title: 'Service Architecture Best Practices',
-    author: 'Bob Johnson',
-    description: 'Building a scalable Angular application requires a well-designed service architecture that properly separates concerns. This article explores proven patterns for organizing services, managing state, and creating maintainable data layers in your Angular applications.',
-    createdAt: '2026-01-14'
+    title: 'Why Walking Helps Clear the Mind',
+    description: 'How daily walks can improve mood, creativity, and overall mental health.',
+    author: 'Nino',
+    createdAt: '2026-01-04',
   },
   {
     id: 4,
-    title: 'Angular Material Theming Guide',
-    author: 'Alice Williams',
-    description: 'Creating beautiful and accessible user interfaces is easier than ever with Angular Material. This guide covers everything you need to know about implementing custom themes, including light and dark modes, color palettes, typography, and density configurations.',
-    createdAt: '2026-01-15'
-  },  {
+    title: 'Minimalist Living: Where to Start',
+    description: 'Practical advice for decluttering your space and simplifying daily life.',
+    author: 'David',
+    createdAt: '2026-01-05',
+  },
+  {
     id: 5,
-    title: 'Getting Started with Angular 20',
-    author: 'John Doe',
-    description: 'Angular 20 introduces amazing new features including improved signals, better performance, and enhanced developer experience. This comprehensive guide will walk you through all the major updates and show you how to leverage them in your projects.',
-    createdAt: '2026-01-10'
+    title: 'Common Cooking Mistakes at Home',
+    description: 'Small cooking habits that often ruin meals and how to avoid them.',
+    author: 'Mariam',
+    createdAt: '2026-01-06',
   },
   {
     id: 6,
-    title: 'Understanding Lazy Loading in Angular',
-    author: 'Jane Smith',
-    description: 'Lazy loading is a design pattern that delays the loading of resources until they are actually needed. In Angular applications, this technique can significantly improve initial load time and overall performance by splitting your application into smaller chunks that are loaded on demand.',
-    createdAt: '2026-01-12'
+    title: 'How Music Affects Your Mood',
+    description: 'Exploring the connection between music, emotions, and productivity.',
+    author: 'Giorgi',
+    createdAt: '2026-01-07',
   },
   {
     id: 7,
-    title: 'Service Architecture Best Practices',
-    author: 'Bob Johnson',
-    description: 'Building a scalable Angular application requires a well-designed service architecture that properly separates concerns. This article explores proven patterns for organizing services, managing state, and creating maintainable data layers in your Angular applications.',
-    createdAt: '2026-01-14'
+    title: 'Traveling Without a Plan',
+    description: 'The pros and cons of spontaneous travel and unplanned adventures.',
+    author: 'Ana',
+    createdAt: '2026-01-08',
   },
   {
     id: 8,
-    title: 'Angular Material Theming Guide',
-    author: 'Alice Williams',
-    description: 'Creating beautiful and accessible user interfaces is easier than ever with Angular Material. This guide covers everything you need to know about implementing custom themes, including light and dark modes, color palettes, typography, and density configurations.',
-    createdAt: '2026-01-16'
-  },  {
+    title: 'Indoor Plants That Are Hard to Kill',
+    description: 'A list of low-maintenance plants suitable for apartments and offices.',
+    author: 'Salome',
+    createdAt: '2026-01-09',
+  },
+  {
     id: 9,
-    title: 'Getting Started with Angular 20',
-    author: 'John Doe',
-    description: 'Angular 20 introduces amazing new features including improved signals, better performance, and enhanced developer experience. This comprehensive guide will walk you through all the major updates and show you how to leverage them in your projects.',
-    createdAt: '2026-01-17'
+    title: 'Why We Procrastinate',
+    description: 'Understanding procrastination and small techniques to overcome it.',
+    author: 'Luka',
+    createdAt: '2026-01-10',
   },
   {
     id: 10,
-    title: 'Understanding Lazy Loading in Angular',
-    author: 'Jane Smith',
-    description: 'Lazy loading is a design pattern that delays the loading of resources until they are actually needed. In Angular applications, this technique can significantly improve initial load time and overall performance by splitting your application into smaller chunks that are loaded on demand.',
-    createdAt: '2026-01-18'
+    title: 'Simple Ways to Save Money',
+    description: 'Everyday financial habits that help reduce unnecessary spending.',
+    author: 'Nino',
+    createdAt: '2026-01-11',
   },
   {
     id: 11,
-    title: 'Service Architecture Best Practices',
-    author: 'Bob Johnson',
-    description: 'Building a scalable Angular application requires a well-designed service architecture that properly separates concerns. This article explores proven patterns for organizing services, managing state, and creating maintainable data layers in your Angular applications.',
-    createdAt: '2026-01-14'
+    title: 'Is Multitasking Really Efficient?',
+    description: 'A look at how multitasking impacts attention and performance.',
+    author: 'David',
+    createdAt: '2026-01-12',
   },
   {
     id: 12,
-    title: 'Angular Material Theming Guide',
-    author: 'Alice Williams',
-    description: 'Creating beautiful and accessible user interfaces is easier than ever with Angular Material. This guide covers everything you need to know about implementing custom themes, including light and dark modes, color palettes, typography, and density configurations.',
-    createdAt: '2026-01-15'
-  }
+    title: 'Books That Are Easy to Read After Work',
+    description: 'Light and engaging book recommendations for tired evenings.',
+    author: 'Mariam',
+    createdAt: '2026-01-13',
+  },
+  {
+    id: 13,
+    title: 'How Weather Influences Mood',
+    description: 'Why cloudy or sunny days can change how we feel and behave.',
+    author: 'Ana',
+    createdAt: '2026-01-14',
+  },
+  {
+    id: 14,
+    title: 'The Appeal of Old Cities',
+    description: 'What makes historic cities feel warm, familiar, and inspiring.',
+    author: 'Salome',
+    createdAt: '2026-01-15',
+  },
 ];

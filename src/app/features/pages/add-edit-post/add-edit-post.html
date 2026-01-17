@@ -1,0 +1,55 @@
+<div class="page-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{postInfo? 'პოსტის რედაქტირება':'ახალი პოსტის დამატება' }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>სათაური:</mat-label>
+          <input matInput formControlName="title">
+          <mat-error>
+            @if (postForm.get('title')?.hasError('required')){
+              სათაური სავალდებულოა
+            }
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>ავტორი:</mat-label>
+          <input matInput formControlName="author">
+          <mat-error>
+          @if (postForm.get('author')?.hasError('required')) {
+            ავტორი სავალდებულოა
+          }
+        </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>აღწერა (Description)</mat-label>
+          <textarea
+            matInput
+            formControlName="description"
+            rows="10">
+        </textarea>
+          <mat-error>
+            @if (postForm.get('description')?.hasError('required')){
+              აღწერა სავალდებულოა
+            } @else if (postForm.get('description')?.hasError('minlength')){
+              მინიმუმ 50 სიმბოლო
+            }
+          </mat-error>
+        </mat-form-field>
+
+        <div class="actions">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit">
+            შენახვა
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

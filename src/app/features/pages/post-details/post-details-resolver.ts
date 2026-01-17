@@ -11,7 +11,6 @@ export const postDetailsResolver: ResolveFn<Post | RedirectCommand> = (route) =>
   const snackBar = inject(NotificationService);
 
   const id = Number(route.paramMap.get('id'));
-
   return postService.getPostById(id).pipe(
     tap(post => console.log('Resolved post:', post)),
     catchError(err => {

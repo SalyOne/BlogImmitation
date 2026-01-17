@@ -13,7 +13,9 @@ export interface CreatePostDto {
 }
 
 export interface UpdatePostDto {
+  id?: number;
   title?: string;
   author?: string;
   description?: string;
+  createdAt?: string;
 }
