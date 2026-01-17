@@ -12,9 +12,13 @@ export const routes: Routes = [
       },
     ]
   },
-
+  {
+    path: 'not-found',
+    loadComponent: () =>
+      import('./features/pages/not-found/not-found').then(m => m.NotFound),
+  },
   {
     path: '**',
-    loadComponent: () => import('./features/pages/not-found/not-found').then(m => m.NotFound),
+    redirectTo: 'not-found',
   },
 ];

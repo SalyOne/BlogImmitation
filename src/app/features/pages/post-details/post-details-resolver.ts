@@ -11,6 +11,9 @@ export const postDetailsResolver: ResolveFn<Post | RedirectCommand> = (route) =>
   const snackBar = inject(NotificationService);
 
   const id = Number(route.paramMap.get('id'));
+  if (!id || Number.isNaN(id)) {
+    return of(new RedirectCommand(router.parseUrl('/not-found')));
+  }
   return postService.getPostById(id).pipe(
     tap(post => console.log('Resolved post:', post)),
     catchError(err => {
