@@ -5,7 +5,7 @@
       <mat-label>Search by title</mat-label>
       <input
         matInput
-        [ngModel]="titleFilter()"
+        [ngModel]="(titleFilter$ | async)"
         (ngModelChange)="onTitleFilterChange($event)"
         placeholder="Filter posts...">
     </mat-form-field>
@@ -13,7 +13,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Sort by date</mat-label>
       <mat-select
-        [ngModel]="sortOrder()"
+        [ngModel]="(sortOrder$ | async)"
         (ngModelChange)="onSortOrderChange($event)">
         <mat-option value="desc">Newest First</mat-option>
         <mat-option value="asc">Oldest First</mat-option>
@@ -22,14 +22,15 @@
   </div>
   <!-- პოსტების ჩამონათვალი -->
   <div class="post-list-item-container">
-    @if (loading()) {
+
+    @if ((loading$ | async)) {
       <div class="loading-state">
         <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
         <p>პოსტები იტვირთება...</p>
       </div>
     } @else {
-      @for (post of pagedPosts(); track post.id) {
-        <app-post-item [postItem]="post"></app-post-item>
+      @for (post of (pagedPosts$ | async); track post.id) {
+        <app-post-item [postItem]="post"> </app-post-item>
       } @empty {
         <div class="empty-state">
           <mat-icon>article</mat-icon>
@@ -39,11 +40,11 @@
     }
   </div>
   <!--  პაგინაცია, გამოჩნდება პოსტების ქონის შემთხვევაში -->
-  @if (filteredTotal()) {
+  @if ((filteredTotal$ | async)) {
     <mat-paginator
-      [length]="filteredTotal()"
-      [pageIndex]="pageIndex()"
-      [pageSize]="pageSize()"
+      [length]="(filteredTotal$ | async)"
+      [pageIndex]="(pageIndex$ | async)"
+      [pageSize]="(pageSize$ | async)"
       [pageSizeOptions]="[5, 10, 20, 50]"
       (page)="onPageChange($event)">
     </mat-paginator>
