@@ -1,14 +1,14 @@
 @if (post$ | async; as post) {
   <div class="header-row">
     <h1>{{ post.title }}</h1>
-    <button mat-stroked-button [routerLink]="['/posts', post.id,'edit']">
-      <mat-icon>edit</mat-icon>
-      edit post
-    </button>
-    <button mat-stroked-button  (click)="deletePost()">
-      <mat-icon>delete</mat-icon>
-      delete
-    </button>
+    <div class="button-container">
+      <button mat-stroked-button [routerLink]="['/posts', post.id,'edit']">
+        <mat-icon>edit</mat-icon>edit
+      </button>
+      <button mat-stroked-button  (click)="deletePost()">
+        <mat-icon>delete</mat-icon>delete
+      </button>
+    </div>
   </div>
   <p>{{ post.author }} | <small>{{ post.createdAt }}</small></p>
   <div>

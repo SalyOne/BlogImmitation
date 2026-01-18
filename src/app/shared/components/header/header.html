@@ -1,12 +1,17 @@
 <mat-toolbar class="main-header">
 
-  <span class="app-logo" routerLink="" style="cursor:pointer;">My Blog</span>
+    <span class="app-logo" routerLink="" style="cursor:pointer;">My Blog</span>
+    <nav>
+        <ul>
+            <li><a routerLink="/posts" routerLinkActive="active-link">Posts</a></li>
+            <li><a routerLink="/about" routerLinkActive="active-link">About</a></li>
+        </ul>
+    </nav>
+    <span class="spacer"></span>
 
-  <span class="spacer"></span>
-
-  <button mat-stroked-button  routerLink="/posts/add" routerLinkActive="active-link">
-    <mat-icon>add</mat-icon>
-    add new post
-  </button>
+    <button mat-stroked-button routerLink="/posts/add">
+        <mat-icon>add</mat-icon>
+        add new post
+    </button>
 
 </mat-toolbar>
