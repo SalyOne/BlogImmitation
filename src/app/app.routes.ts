@@ -10,6 +10,9 @@ export const routes: Routes = [
       { path: 'posts', loadChildren: () =>
           import('./features/pages/post-list/post-list.routes').then(m => m.POST_ROUTES)
       },
+      { path: 'about', loadChildren: () =>
+          import('./features/pages/about/about.routes').then(m => m.ABOUT_ROUTES)
+      },
     ]
   },
   {

@@ -10,7 +10,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {PostService} from '../../../core/services/post.service';
 import {NotificationService} from '../../../core/services/notification.service';
 import {CanComponentDeactivate} from '../../../core/guards/form-control-guard';
-import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-edit-post',
@@ -23,7 +22,6 @@ export class AddEditPost implements OnInit, CanComponentDeactivate {
   router = inject(Router);
   snackBar = inject(NotificationService);
   fb = inject(FormBuilder);
-  dialog = inject(MatDialog)
 
   postService = inject(PostService);
   private destroyRef = inject(DestroyRef);
@@ -68,8 +66,6 @@ export class AddEditPost implements OnInit, CanComponentDeactivate {
       ...this.postForm.getRawValue()
     }
 
-    console.log(payLoad)
-
     if (this.postInfo) {
       this.postService.updatePost(+this.postInfo?.id, payLoad).pipe(
         takeUntilDestroyed(this.destroyRef),
@@ -93,6 +89,7 @@ export class AddEditPost implements OnInit, CanComponentDeactivate {
   canDeactivate(): boolean {
     return !this.postForm || this.postForm.pristine;
   }
+
   finishAndGo(url: string) {
     this.postForm.markAsPristine();
     this.postForm.markAsUntouched();
