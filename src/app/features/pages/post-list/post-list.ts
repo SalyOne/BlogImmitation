@@ -5,10 +5,11 @@ import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-import {shareReplay, tap} from 'rxjs';
+import {finalize, shareReplay, tap} from 'rxjs';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {AsyncPipe} from '@angular/common';
 
 
 @Component({
@@ -20,7 +21,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatInputModule,
     MatSelectModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    AsyncPipe
   ],
   templateUrl: './post-list.html',
   styleUrl: './post-list.scss',
@@ -28,17 +30,15 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 export class PostList {
   postService = inject(PostService);
 
-
   allPosts$ = this.postService.getAllPosts().pipe(
     shareReplay(1),
-    tap(() => this.loading.set(false))
+    finalize(() => this.loading.set(false))
   );
   allPosts = toSignal(this.allPosts$, { initialValue: [] });
-
-  loading = signal(true);
-
   titleFilter = signal('');
   sortOrder = signal<'asc' | 'desc'>('desc');
+
+  loading = signal(true);
 
   pageIndex = signal(0);
   pageSize = signal(10);
@@ -52,7 +52,7 @@ export class PostList {
 
   // ფილტრირებული და
   filteredAndSortedPosts = computed(() => {
-    let posts = this.allPosts();
+      let posts = this.allPosts();
 
     // Apply title filter
     const filter = this.titleFilter().toLowerCase().trim();
@@ -91,3 +91,5 @@ export class PostList {
     this.pageSize.set(event.pageSize);
   }
 }
+
+

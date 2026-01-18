@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {AboutService} from '../../../core/services/about.service';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-about',
-  imports: [],
+  imports: [
+    AsyncPipe
+  ],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })
 export class About {
+  about$ = inject(AboutService).getAbout();
 
 }

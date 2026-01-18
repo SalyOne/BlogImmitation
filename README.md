@@ -22,6 +22,13 @@ a mocked backend.
 
 ## Development server
 
+After cloning or downloading the repository, install dependencies:
+
+```bash
+npm install
+
+```
+
 To start a local development server, run:
 
 ```bash
